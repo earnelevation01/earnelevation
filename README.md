@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join Work From Home - WhatsApp</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded-2xl shadow-lg max-w-md w-full">
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Start Your Work From Home Journey</h2>
+    <form id="leadForm" class="space-y-4">
+      <input type="text" id="name" placeholder="Your Name *" required class="w-full border p-2 rounded-md" />
+      <input type="tel" id="phone" placeholder="Phone Number *" required class="w-full border p-2 rounded-md" />
+      <input type="text" id="city" placeholder="City" class="w-full border p-2 rounded-md" />
+      <input type="text" id="state" placeholder="State" class="w-full border p-2 rounded-md" />
+      
+      <!-- Country field fixed to India -->
+      <select id="country" class="w-full border p-2 rounded-md bg-gray-100 cursor-not-allowed" disabled>
+        <option selected>India</option>
+      </select>
+
+      <button type="submit" class="w-full bg-green-600 text-white p-2 rounded-md hover:bg-green-700">
+        Submit via WhatsApp
+      </button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const state = document.getElementById('state').value.trim();
+      const country = "India";
+
+      if (!name || !phone) {
+        alert("Please enter your name and phone number.");
+        return;
+      }
+
+      const yourWhatsAppNumber = "919831749862";
+      const message = `Hello! I am interested in work from home opportunity.\n\nMy Details:\nName: ${name}\nPhone: ${phone}\nCity: ${city}\nState: ${state}\nCountry: ${country}`;
+      const whatsappURL = `https://wa.me/${yourWhatsAppNumber}?text=${encodeURIComponent(message)}`;
+
+      // Direct redirect (same tab)
+      window.location.href = whatsappURL;
+    });
+  </script>
+</body>
+</html
